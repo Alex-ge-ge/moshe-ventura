@@ -8,9 +8,7 @@ const businessTypes = [
   "מחסן / לוגיסטיקה",
   "מפעל / תעשייה",
   "מרכול / מכולת",
-  "מספרה / קוסמטיקה",
-  "מרפאה / קליניקה",
-  "אחר",
+"אחר",
 ];
 
 export default function ContactForm() {
