@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Building2, Flame, Shield, HeartPulse, Leaf, HardHat, CheckCircle2, ArrowLeft } from "lucide-react";
 import { EtherealBeamsHero } from "@/components/ui/ethereal-beams";
+import { SplineScene } from "@/components/ui/splite";
 
 const authorities = [
   { icon: Building2, name: "עירייה" },
@@ -62,7 +63,7 @@ export default function HomePage() {
 
       {/* HERO */}
       <EtherealBeamsHero>
-        <div className="flex flex-col h-full min-h-[680px] max-w-7xl mx-auto px-4">
+        <div className="relative z-10 flex flex-col md:flex-row h-full min-h-[680px] max-w-7xl mx-auto px-4">
           {/* Grid overlay */}
           <div className="absolute inset-0 pointer-events-none"
             style={{
@@ -70,16 +71,17 @@ export default function HomePage() {
               backgroundImage: "linear-gradient(to right, rgba(201,162,39,0.04) 1px, transparent 1px), linear-gradient(to bottom, rgba(201,162,39,0.04) 1px, transparent 1px)",
             }}
           />
-          <div className="flex-1 flex flex-col justify-center py-20 md:py-0 max-w-2xl">
+          {/* Left — text */}
+          <div className="flex-1 flex flex-col justify-center py-12 md:py-0">
             <div className="inline-block bg-[#C9A227]/10 border border-[#C9A227]/30 text-[#C9A227]/80 text-sm font-semibold px-4 py-1 rounded-full mb-6 backdrop-blur-sm w-fit">
               הנדסאי בניין | תברואן מוסמך
             </div>
-            <h1 className="text-4xl md:text-6xl font-extrabold leading-tight mb-6" style={gradientText}>
+            <h1 className="text-4xl md:text-5xl font-extrabold leading-tight mb-6" style={gradientText}>
               רישוי עסקים בלי כאב ראש
               <br />
               משה ונטורה מטפל בשבילך
             </h1>
-            <p className="text-[#C9A227]/60 max-w-md mb-10 leading-relaxed text-base md:text-lg">
+            <p className="text-[#C9A227]/60 max-w-md mb-8 leading-relaxed text-base md:text-lg">
               קיבלת סירוב מהעירייה? אין לך זמן לרוץ בין הרשויות?<br />
               משה ינהל עבורך את כל התהליך — מהתוכנית ועד קבלת הרישיון.
             </p>
@@ -95,6 +97,14 @@ export default function HomePage() {
                 איך זה עובד? <ArrowLeft className="w-4 h-4" />
               </Link>
             </div>
+          </div>
+
+          {/* Right — Spline 3D robot */}
+          <div className="flex-1 relative hidden md:block">
+            <SplineScene
+              scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
+              className="w-full h-full"
+            />
           </div>
         </div>
       </EtherealBeamsHero>
