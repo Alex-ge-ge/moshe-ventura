@@ -101,10 +101,12 @@ export default function HomePage() {
 
           {/* Right — Spline 3D robot */}
           <div className="w-[40%] md:flex-1 relative shrink-0">
-            <SplineScene
-              scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
-              className="w-full h-full"
-            />
+            <div className="w-full h-full md:scale-100 scale-[0.7] origin-center">
+              <SplineScene
+                scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
+                className="w-full h-full"
+              />
+            </div>
           </div>
         </div>
       </EtherealBeamsHero>
