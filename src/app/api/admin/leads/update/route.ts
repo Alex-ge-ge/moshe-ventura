@@ -13,6 +13,6 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "חסרים פרמטרים" }, { status: 400 });
   }
 
-  updateLeadStatus(Number(id), status as Lead["status"]);
+  await updateLeadStatus(Number(id), status as Lead["status"]);
   return NextResponse.json({ success: true });
 }

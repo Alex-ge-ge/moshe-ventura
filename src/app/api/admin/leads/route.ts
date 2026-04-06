@@ -8,6 +8,6 @@ export async function GET() {
     return NextResponse.json({ error: "לא מורשה" }, { status: 401 });
   }
 
-  const leads = getAllLeads();
+  const leads = await getAllLeads();
   return NextResponse.json(leads);
 }

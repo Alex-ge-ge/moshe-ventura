@@ -13,7 +13,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    insertLead({ name, phone, email, business_type, message });
+    await insertLead({ name, phone, email, business_type, message });
 
     return NextResponse.json({ success: true });
   } catch (err) {

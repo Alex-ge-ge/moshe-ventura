@@ -9,7 +9,7 @@ export default async function AdminPage() {
     redirect("/admin/login");
   }
 
-  const leads = getAllLeads();
+  const leads = await getAllLeads();
 
   return <AdminDashboard initialLeads={leads} />;
 }
