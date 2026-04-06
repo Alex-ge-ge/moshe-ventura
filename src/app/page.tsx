@@ -6,7 +6,6 @@ const authorities = [
   { icon: "👮", name: "משטרה" },
   { icon: "🏥", name: "משרד הבריאות" },
   { icon: "🌿", name: "איכות הסביבה" },
-  { icon: "⚡", name: "חשמל ותשתיות" },
 ];
 
 const businessTypes = [
