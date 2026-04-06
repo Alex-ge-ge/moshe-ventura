@@ -182,23 +182,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* CTA BANNER */}
-      <section className="bg-[#C9A227] py-14 px-4 text-center">
-        <div className="max-w-3xl mx-auto">
-          <h2 className="text-3xl font-extrabold text-[#1B3A6B] mb-4">
-            מוכן להתחיל? מלא פנייה עכשיו
-          </h2>
-          <p className="text-[#1B3A6B]/80 mb-8 text-lg">
-            ייעוץ ראשוני חינם, ללא התחייבות. נחזור אליך תוך 24 שעות.
-          </p>
-          <Link
-            href="/contact"
-            className="inline-block bg-[#1B3A6B] hover:bg-[#0d1f3c] text-white font-bold px-10 py-4 rounded-xl text-lg transition-all shadow-lg"
-          >
-            שלח פנייה עכשיו
-          </Link>
-        </div>
-      </section>
     </div>
   );
 }
