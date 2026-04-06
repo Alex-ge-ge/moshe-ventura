@@ -263,7 +263,7 @@ export function CinematicFooter() {
           </div>
 
           {/* Marquee */}
-          <div className="absolute top-10 left-0 w-full overflow-hidden border-y border-[#C9A227]/15 bg-[#0d1f3c]/70 backdrop-blur-md py-3 z-10 -rotate-1 scale-110 shadow-2xl">
+          <div className="absolute top-10 left-0 w-full overflow-hidden border-y border-[#C9A227]/15 bg-[#0d1f3c]/70 backdrop-blur-md py-3 z-10 shadow-2xl">
             <div className="flex w-max animate-footer-scroll-marquee text-xs md:text-sm font-bold tracking-widest text-[#C9A227]/60 uppercase">
               <MarqueeItem />
               <MarqueeItem />

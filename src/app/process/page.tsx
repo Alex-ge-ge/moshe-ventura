@@ -26,7 +26,7 @@ const steps = [
     duration: "2-3 שבועות",
     icon: "📐",
     desc: "הכנת כל המסמכים הנדרשים לקבלת רישיון עסק: תוכנית אדריכלית, תוכנית תברואה, מפרטים טכניים וכל מה שכל רשות דורשת.",
-    points: ["תוכנית אדריכלית מדויקת", "תוכנית תברואה ובטיחות", "מסמכי הגשה לכל רשות", "בדיקה מוקדמת מול הרשויות"],
+    points: ["תוכנית אדריכלית מדויקת", "מסמכי הגשה לכל רשות", "בדיקה מוקדמת מול הרשויות"],
   },
   {
     num: "03",
@@ -34,14 +34,14 @@ const steps = [
     duration: "2-16 שבועות",
     icon: "📬",
     desc: "הגשת הבקשה לעירייה וניהול מלא של התהליך מולה ומול כל הגורמים: כיבוי אש, משטרה, משרד הבריאות, איכות הסביבה ומשרד העבודה. אתה לא צריך לדעת כלום — משה מנהל הכל.",
-    points: ["הגשה לעירייה ומעקב שוטף", "ניהול מול כיבוי אש", "ביקורות עם פקח בריאות", "טיפול בכל דחייה או בקשת השלמה"],
+    points: ["הגשה לעירייה ומעקב שוטף", "מול כל הגורמים הרלוונטיים", "ביקורות עם פקח בריאות", "טיפול בכל דחייה או בקשת השלמה"],
   },
   {
     num: "04",
     title: "קבלת הרישיון ותשלום יתרה",
     duration: "סיום התהליך",
     icon: "🏆",
-    desc: "עם קבלת רישיון העסק — אתה פתוח לפעול! רק בשלב הזה משולמת יתרת 70% מהשכר.",
+    desc: "עם קבלת רישיון העסק — אתה פתוח לפעול! רק בשלב הזה משולמת יתרת 70% מהשכר לפי מה שדיברנו.",
     points: ["קבלת הרישיון הסופי", "תשלום יתרת השכר", "זמינות לשאלות עתידיות"],
   },
 ];
@@ -80,13 +80,10 @@ export default function ProcessPage() {
                   </div>
                 </div>
                 <div className="flex-1">
-                  <div className="flex items-start justify-between flex-wrap gap-2 mb-2">
+                  <div className="flex items-start mb-2">
                     <h3 className="text-xl font-bold text-[#C9A227] flex items-center gap-2">
                       <span>{step.icon}</span> {step.title}
                     </h3>
-                    <span className="bg-[#C9A227]/10 border border-[#C9A227]/20 text-[#C9A227]/70 text-xs font-semibold px-3 py-1 rounded-full">
-                      {step.duration}
-                    </span>
                   </div>
                   <p className="text-[#C9A227]/55 text-sm leading-relaxed mb-4">{step.desc}</p>
                   <ul className="grid grid-cols-1 sm:grid-cols-2 gap-1">

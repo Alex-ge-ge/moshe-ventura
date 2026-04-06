@@ -71,6 +71,7 @@ export default function ContactPage() {
               <div>
                 <p className="text-xs text-[#C9A227]/50">שעות פעילות</p>
                 <p className="font-bold text-[#C9A227] text-sm">א׳–ה׳ | 08:00–18:00</p>
+                <p className="text-[#C9A227]/60 text-xs">יום ו׳ | 08:00–13:00</p>
               </div>
             </div>
 
