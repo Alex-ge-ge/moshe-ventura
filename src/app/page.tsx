@@ -100,7 +100,7 @@ export default function HomePage() {
           </div>
 
           {/* Right — Spline 3D robot */}
-          <div className="flex-1 relative hidden md:block">
+          <div className="flex-1 relative block" style={{ minHeight: '300px' }}>
             <SplineScene
               scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
               className="w-full h-full"
