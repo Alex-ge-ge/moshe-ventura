@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Building2, Flame, Shield, HeartPulse, Leaf, HardHat, CheckCircle2, ArrowLeft } from "lucide-react";
+import { Building2, Flame, Shield, HeartPulse, Leaf, HardHat, CheckCircle2, ArrowLeft, Target, Briefcase, CreditCard, LucideIcon } from "lucide-react";
 import { EtherealBeamsHero } from "@/components/ui/ethereal-beams";
 import { SplineScene } from "@/components/ui/splite";
 
@@ -28,19 +28,19 @@ const steps = [
   { num: "04", title: "קבלת הרישיון", desc: "מקבלים את הרישיון" },
 ];
 
-const whyCards = [
+const whyCards: { icon: LucideIcon; title: string; desc: string }[] = [
   {
-    icon: "🎯",
+    icon: Target,
     title: "מומחיות בלתי מתפשרת",
     desc: "הנדסאי בניין ותברואן מוסמך עם ידע מעמיק בדרישות כל רשות ורשות.",
   },
   {
-    icon: "💼",
+    icon: Briefcase,
     title: "אתה לא צריך לזוז",
     desc: "משה מנהל הכל בשמך — כתיבה, הגשה, מעקב, ותשובות לרשויות.",
   },
   {
-    icon: "✅",
+    icon: CreditCard,
     title: "תשלום הדרגתי",
     desc: "התשלום לפי קצב ההתקדמות.",
   },
@@ -138,7 +138,10 @@ export default function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {whyCards.map((card) => (
               <div key={card.title} className="rounded-2xl p-6 text-center border border-[#C9A227]/15" style={glassCard}>
-                <div className="text-5xl mb-4">{card.icon}</div>
+                <div className="w-14 h-14 rounded-xl border border-[#C9A227]/30 flex items-center justify-center mx-auto mb-4"
+                  style={{ background: "rgba(201,162,39,0.08)" }}>
+                  <card.icon className="w-7 h-7 text-[#C9A227]" />
+                </div>
                 <h3 className="text-xl font-bold text-[#C9A227] mb-2">{card.title}</h3>
                 <p className="text-[#C9A227]/55 text-sm leading-relaxed">{card.desc}</p>
               </div>
