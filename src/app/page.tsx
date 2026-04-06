@@ -63,7 +63,7 @@ export default function HomePage() {
 
       {/* HERO */}
       <EtherealBeamsHero>
-        <div className="relative z-10 flex flex-row h-full min-h-[680px] max-w-7xl mx-auto px-4">
+        <div className="relative z-10 flex flex-col md:flex-row h-full min-h-[680px] max-w-7xl mx-auto px-4">
           {/* Grid overlay */}
           <div className="absolute inset-0 pointer-events-none"
             style={{
@@ -100,13 +100,11 @@ export default function HomePage() {
           </div>
 
           {/* Right — Spline 3D robot */}
-          <div className="w-[40%] md:flex-1 relative shrink-0">
-            <div className="w-full h-full md:scale-100 scale-[0.7] origin-center">
-              <SplineScene
-                scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
-                className="w-full h-full"
-              />
-            </div>
+          <div className="w-full h-[320px] md:flex-1 md:h-full relative">
+            <SplineScene
+              scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
+              className="w-full h-full"
+            />
           </div>
         </div>
       </EtherealBeamsHero>
