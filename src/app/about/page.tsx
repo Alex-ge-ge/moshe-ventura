@@ -5,7 +5,7 @@ const credentials = [
   { icon: "🏗️", title: "הנדסאי בניין מוסמך", desc: "ידע טכני מעמיק בתכנון ובנייה" },
   { icon: "🧪", title: "תברואן מוסמך", desc: "מוסמך לאישורי בריאות ותברואה" },
   { icon: "📜", title: "ניסיון עשיר", desc: "ליווי מאות עסקים מתחומים שונים" },
-  { icon: "🤝", title: "קשרים עם הרשויות", desc: "היכרות אישית עם מקבלי ההחלטות" },
+  { icon: "🤝", title: "ניסיון רב בעבודה מול רשויות מקומיות", desc: "היכרות מעמיקה עם הליכי הרישוי" },
 ];
 
 export default function AboutPage() {
@@ -105,18 +105,6 @@ export default function AboutPage() {
               </div>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* Values */}
-      <section className="py-12 px-4 bg-[#1B3A6B] text-white text-center">
-        <div className="max-w-3xl mx-auto">
-          <blockquote className="text-2xl font-light italic text-blue-100 mb-4">
-            &ldquo;אני לא מוכר הבטחות — אני מספק תוצאות.
-            <br />
-            הרישיון הוא הראיה.&rdquo;
-          </blockquote>
-          <p className="text-[#C9A227] font-semibold">— משה ונטורה</p>
         </div>
       </section>
     </div>

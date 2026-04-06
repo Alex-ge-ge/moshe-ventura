@@ -53,7 +53,8 @@ export default function HomePage() {
             הנדסאי בניין | תברואן מוסמך
           </div>
           <h1 className="text-4xl md:text-5xl font-extrabold leading-tight mb-6">
-            רישוי עסקים בלי כאב ראש —<br />
+            רישוי עסקים בלי כאב ראש
+            <br />
             <span className="text-[#C9A227]">משה ונטורה מטפל בשבילך</span>
           </h1>
           <p className="text-lg md:text-xl text-blue-100 max-w-2xl mx-auto mb-10 leading-relaxed">
@@ -118,7 +119,7 @@ export default function HomePage() {
               {
                 icon: "✅",
                 title: "תשלום לאחר הצלחה",
-                desc: "70% מהשכר משולמים רק לאחר קבלת הרישיון. הסיכון שלנו, לא שלך.",
+                desc: "70% מהשכר משולמים רק לאחר קבלת הרישיון.",
               },
             ].map((card) => (
               <div
