@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+import { CinematicFooter } from "@/components/ui/motion-footer";
 
 export const metadata: Metadata = {
   title: "משה ונטורה | רישוי עסקים",
@@ -20,7 +20,7 @@ export default function RootLayout({
       <body className="flex flex-col min-h-screen">
         <Navbar />
         <main className="flex-1">{children}</main>
-        <Footer />
+        <CinematicFooter />
       </body>
     </html>
   );

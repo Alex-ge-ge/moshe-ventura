@@ -9,6 +9,17 @@
   --navy-dark: #0d1f3c;
   --gold: #C9A227;
   --gold-light: #e6c547;
+
+  /* shadcn-compatible CSS variables for CinematicFooter */
+  --background: 13 31 60;        /* #0d1f3c */
+  --foreground: 201 162 39;      /* #C9A227 gold */
+  --primary: 201 162 39;
+  --primary-foreground: 13 31 60;
+  --secondary: 27 58 107;
+  --secondary-foreground: 255 255 255;
+  --muted-foreground: 160 140 100;
+  --border: 201 162 39;
+  --destructive: 239 68 68;
 }
 
 * {
