@@ -18,27 +18,25 @@ export default function Navbar() {
   const pathname = usePathname();
 
   return (
-    <header className="sticky top-0 z-50 bg-[#1B3A6B] shadow-lg">
+    <header className="sticky top-0 z-50 bg-[#0d1f3c]/90 backdrop-blur-md border-b border-[#C9A227]/15 shadow-lg">
       <div className="max-w-6xl mx-auto px-4 flex items-center justify-between h-16">
-        {/* Logo + name */}
         <Link href="/" className="flex items-center gap-3">
           <Logo size={40} />
           <div className="text-right leading-tight">
-            <p className="text-white font-bold text-base leading-none">משה ונטורה</p>
-            <p className="text-[#C9A227] text-xs font-medium">רישוי עסקים</p>
+            <p className="text-[#C9A227] font-bold text-base leading-none">משה ונטורה</p>
+            <p className="text-[#C9A227]/50 text-xs font-medium">רישוי עסקים</p>
           </div>
         </Link>
 
-        {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-1">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className={`px-4 py-2 rounded text-sm font-semibold transition-colors ${
+              className={`px-4 py-2 rounded-lg text-sm font-semibold transition-all ${
                 pathname === link.href
-                  ? "bg-[#C9A227] text-[#1B3A6B]"
-                  : "text-white hover:bg-white/10"
+                  ? "bg-[#C9A227]/15 text-[#C9A227] border border-[#C9A227]/30"
+                  : "text-[#C9A227]/60 hover:text-[#C9A227] hover:bg-[#C9A227]/10"
               }`}
             >
               {link.label}
@@ -46,17 +44,15 @@ export default function Navbar() {
           ))}
         </nav>
 
-        {/* CTA button - desktop */}
         <Link
           href="/contact"
-          className="hidden md:block bg-[#C9A227] hover:bg-[#e6c547] text-[#1B3A6B] font-bold px-5 py-2 rounded-lg text-sm transition-colors"
+          className="hidden md:block bg-[#C9A227]/10 hover:bg-[#C9A227]/20 border border-[#C9A227]/40 hover:border-[#C9A227]/70 text-[#C9A227] font-bold px-5 py-2 rounded-full text-sm transition-all backdrop-blur-sm"
         >
           קבל ייעוץ חינם
         </Link>
 
-        {/* Hamburger */}
         <button
-          className="md:hidden text-white p-2"
+          className="md:hidden text-[#C9A227] p-2"
           onClick={() => setOpen(!open)}
           aria-label="תפריט"
         >
@@ -72,18 +68,15 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* Mobile menu */}
       {open && (
-        <div className="md:hidden bg-[#0d1f3c] border-t border-white/10">
+        <div className="md:hidden bg-[#0d1f3c] border-t border-[#C9A227]/10">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
               onClick={() => setOpen(false)}
-              className={`block px-6 py-3 text-sm font-semibold border-b border-white/5 ${
-                pathname === link.href
-                  ? "text-[#C9A227]"
-                  : "text-white hover:text-[#C9A227]"
+              className={`block px-6 py-3 text-sm font-semibold border-b border-[#C9A227]/05 ${
+                pathname === link.href ? "text-[#C9A227]" : "text-[#C9A227]/50 hover:text-[#C9A227]"
               }`}
             >
               {link.label}
@@ -92,7 +85,7 @@ export default function Navbar() {
           <Link
             href="/contact"
             onClick={() => setOpen(false)}
-            className="block mx-4 my-3 bg-[#C9A227] text-[#1B3A6B] font-bold px-4 py-2 rounded-lg text-center text-sm"
+            className="block mx-4 my-3 bg-[#C9A227]/10 border border-[#C9A227]/30 text-[#C9A227] font-bold px-4 py-2 rounded-full text-center text-sm"
           >
             קבל ייעוץ חינם
           </Link>

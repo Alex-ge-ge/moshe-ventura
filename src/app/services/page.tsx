@@ -1,16 +1,20 @@
 import Link from "next/link";
 
+const glassCard = {
+  background: "linear-gradient(145deg, rgba(201,162,39,0.07) 0%, rgba(201,162,39,0.02) 100%)",
+};
+
 const services = [
   {
     icon: "📋",
     title: "הכנת תוכנית עסק",
-    desc: "הכנת תוכנית עסק מקיפה ומפורטת בהתאם לדרישות העירייה והרשויות הרלוונטיות. התוכנית כוללת תרשים אדריכלי, תוכנית תברואה, בטיחות אש ועוד.",
+    desc: "הכנת תוכנית עסק מקיפה ומפורטת בהתאם לדרישות העירייה והרשויות הרלוונטיות.",
     includes: ["תרשים אדריכלי", "תוכנית תברואה", "תוכנית בטיחות אש", "בדיקת עמידה בתקנות"],
   },
   {
     icon: "🏛️",
     title: "הגשה לעירייה",
-    desc: "הגשת הבקשה לרישיון עסק לעירייה, כולל כל הטפסים הנדרשים, ומעקב שוטף אחר ההליך עד לקבלת הרישיון.",
+    desc: "הגשת הבקשה לרישיון עסק לעירייה, כולל כל הטפסים הנדרשים, ומעקב שוטף עד לקבלת הרישיון.",
     includes: ["מילוי כל הטפסים", "הגשה דיגיטלית ופיזית", "מעקב אחר הבקשה", "טיפול בהתנגדויות"],
   },
   {
@@ -22,7 +26,7 @@ const services = [
   {
     icon: "👮",
     title: "משטרה",
-    desc: "טיפול בדרישות הרישוי מטעם המשטרה, הכולל בדיקות אבטחה, רישיונות לעסקים הדורשים אישור משטרתי.",
+    desc: "טיפול בדרישות הרישוי מטעם המשטרה, הכולל בדיקות אבטחה ורישיונות לעסקים הדורשים אישור משטרתי.",
     includes: ["בקשת אישור משטרתי", "תכנון אבטחה", "מעקב ועדכון", "קבלת היתר"],
   },
   {
@@ -45,37 +49,47 @@ const services = [
   },
 ];
 
+const gradientText = {
+  background: "linear-gradient(180deg, #C9A227 0%, rgba(201,162,39,0.6) 100%)",
+  WebkitBackgroundClip: "text" as const,
+  WebkitTextFillColor: "transparent" as const,
+  backgroundClip: "text" as const,
+};
+
 export default function ServicesPage() {
   return (
-    <div>
+    <div className="bg-[#0d1f3c] min-h-screen">
       {/* Hero */}
-      <section className="bg-gradient-to-br from-[#1B3A6B] to-[#2a5298] text-white py-16 px-4 text-center">
-        <div className="max-w-3xl mx-auto">
-          <h1 className="text-4xl font-extrabold mb-4">השירותים שלנו</h1>
-          <p className="text-blue-100 text-lg leading-relaxed">
+      <section className="relative py-16 px-4 text-center overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none"
+          style={{
+            backgroundSize: "60px 60px",
+            backgroundImage: "linear-gradient(to right, rgba(201,162,39,0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(201,162,39,0.05) 1px, transparent 1px)",
+          }}
+        />
+        <div className="relative max-w-3xl mx-auto">
+          <h1 className="text-4xl font-extrabold mb-4" style={gradientText}>השירותים שלנו</h1>
+          <p className="text-[#C9A227]/55 text-lg leading-relaxed">
             ליווי מקיף מקצה לקצה — מהכנת התוכנית ועד קבלת הרישיון, מול כל הרשויות
           </p>
         </div>
       </section>
 
       {/* Services grid */}
-      <section className="py-16 px-4 bg-gray-50">
-        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+      <section className="py-12 px-4">
+        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-5">
           {services.map((s) => (
-            <div
-              key={s.title}
-              className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100"
-            >
+            <div key={s.title} className="rounded-2xl p-6 border border-[#C9A227]/15" style={glassCard}>
               <div className="flex items-start gap-4 mb-4">
                 <div className="text-4xl">{s.icon}</div>
                 <div>
-                  <h3 className="text-xl font-bold text-[#1B3A6B]">{s.title}</h3>
-                  <p className="text-gray-600 text-sm mt-1 leading-relaxed">{s.desc}</p>
+                  <h3 className="text-xl font-bold text-[#C9A227]">{s.title}</h3>
+                  <p className="text-[#C9A227]/55 text-sm mt-1 leading-relaxed">{s.desc}</p>
                 </div>
               </div>
-              <ul className="space-y-1 border-t border-gray-100 pt-4">
+              <ul className="space-y-1 border-t border-[#C9A227]/10 pt-4">
                 {s.includes.map((item) => (
-                  <li key={item} className="flex items-center gap-2 text-sm text-gray-700">
+                  <li key={item} className="flex items-center gap-2 text-sm text-[#C9A227]/70">
                     <span className="text-[#C9A227] font-bold">✓</span>
                     {item}
                   </li>
@@ -87,17 +101,16 @@ export default function ServicesPage() {
       </section>
 
       {/* Pricing note */}
-      <section className="py-12 px-4 bg-white">
-        <div className="max-w-3xl mx-auto bg-[#e8f0f7] border border-[#1B3A6B]/20 rounded-2xl p-8 text-center">
-          <h2 className="text-2xl font-extrabold text-[#1B3A6B] mb-4">מחיר שמשתלם</h2>
-          <p className="text-gray-700 leading-relaxed mb-6">
-            המחיר נקבע לפי הצרכים הספציפיים של העסק שלך. אנחנו מאמינים בהוגנות:
-            <br />
-            <strong>30% מקדמה בתחילת התהליך — 70% רק לאחר קבלת הרישיון.</strong>
+      <section className="py-12 px-4">
+        <div className="max-w-3xl mx-auto rounded-2xl p-8 text-center border border-[#C9A227]/20" style={glassCard}>
+          <h2 className="text-2xl font-extrabold mb-4" style={gradientText}>מחיר שמשתלם</h2>
+          <p className="text-[#C9A227]/60 leading-relaxed mb-6">
+            המחיר נקבע לפי הצרכים הספציפיים של העסק שלך.<br />
+            <strong className="text-[#C9A227]">30% מקדמה בתחילת התהליך — 70% רק לאחר קבלת הרישיון.</strong>
           </p>
           <Link
             href="/contact"
-            className="inline-block bg-[#C9A227] hover:bg-[#e6c547] text-[#1B3A6B] font-bold px-8 py-3 rounded-xl transition-all"
+            className="inline-block bg-[#C9A227]/10 hover:bg-[#C9A227]/20 border border-[#C9A227]/40 hover:border-[#C9A227]/70 text-[#C9A227] font-bold px-8 py-3 rounded-full transition-all"
           >
             קבל הצעת מחיר חינם
           </Link>

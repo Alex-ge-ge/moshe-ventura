@@ -12,9 +12,13 @@ const statusLabels: Record<Lead["status"], string> = {
 };
 
 const statusColors: Record<Lead["status"], string> = {
-  new: "bg-blue-100 text-blue-800",
-  in_progress: "bg-yellow-100 text-yellow-800",
-  done: "bg-green-100 text-green-800",
+  new: "bg-blue-900/40 text-blue-300 border border-blue-500/30",
+  in_progress: "bg-yellow-900/40 text-yellow-300 border border-yellow-500/30",
+  done: "bg-green-900/40 text-green-300 border border-green-500/30",
+};
+
+const glassCard = {
+  background: "linear-gradient(145deg, rgba(201,162,39,0.07) 0%, rgba(201,162,39,0.02) 100%)",
 };
 
 export default function AdminDashboard({ initialLeads }: { initialLeads: Lead[] }) {
@@ -33,9 +37,7 @@ export default function AdminDashboard({ initialLeads }: { initialLeads: Lead[] 
       body: JSON.stringify({ id, status }),
     });
     if (res.ok) {
-      setLeads((prev) =>
-        prev.map((l) => (l.id === id ? { ...l, status } : l))
-      );
+      setLeads((prev) => prev.map((l) => (l.id === id ? { ...l, status } : l)));
     }
     setUpdating(null);
   }
@@ -54,19 +56,24 @@ export default function AdminDashboard({ initialLeads }: { initialLeads: Lead[] 
   };
 
   return (
-    <div className="min-h-screen bg-gray-50" dir="rtl">
+    <div className="min-h-screen bg-[#0d1f3c]" dir="rtl"
+      style={{
+        backgroundImage: "linear-gradient(to right, rgba(201,162,39,0.03) 1px, transparent 1px), linear-gradient(to bottom, rgba(201,162,39,0.03) 1px, transparent 1px)",
+        backgroundSize: "60px 60px",
+      }}
+    >
       {/* Top bar */}
-      <header className="bg-[#1B3A6B] text-white px-6 py-3 flex items-center justify-between">
+      <header className="bg-[#0a1828]/90 backdrop-blur-md border-b border-[#C9A227]/15 px-6 py-3 flex items-center justify-between">
         <div className="flex items-center gap-3">
           <Logo size={32} />
           <div>
-            <p className="font-bold text-sm leading-none">פאנל ניהול</p>
-            <p className="text-[#C9A227] text-xs">משה ונטורה | רישוי עסקים</p>
+            <p className="font-bold text-sm text-[#C9A227] leading-none">פאנל ניהול</p>
+            <p className="text-[#C9A227]/40 text-xs">משה ונטורה | רישוי עסקים</p>
           </div>
         </div>
         <button
           onClick={handleLogout}
-          className="text-sm text-white/70 hover:text-white transition-colors"
+          className="text-sm text-[#C9A227]/50 hover:text-[#C9A227] transition-colors"
         >
           יציאה ←
         </button>
@@ -76,103 +83,82 @@ export default function AdminDashboard({ initialLeads }: { initialLeads: Lead[] 
         {/* Stats */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
           {[
-            { key: "all", label: "סה״כ פניות", color: "border-[#1B3A6B]" },
-            { key: "new", label: "חדשות", color: "border-blue-500" },
-            { key: "in_progress", label: "בטיפול", color: "border-yellow-500" },
-            { key: "done", label: "טופלו", color: "border-green-500" },
+            { key: "all", label: "סה״כ פניות", border: "border-t-[#C9A227]/60" },
+            { key: "new", label: "חדשות", border: "border-t-blue-400/60" },
+            { key: "in_progress", label: "בטיפול", border: "border-t-yellow-400/60" },
+            { key: "done", label: "טופלו", border: "border-t-green-400/60" },
           ].map((s) => (
             <button
               key={s.key}
               onClick={() => setFilter(s.key as typeof filter)}
-              className={`bg-white rounded-xl p-4 text-center border-t-4 shadow-sm cursor-pointer transition-all hover:shadow-md ${
-                filter === s.key ? "ring-2 ring-[#C9A227]" : ""
-              } ${s.color}`}
+              className={`rounded-xl p-4 text-center border-t-4 border border-[#C9A227]/10 ${s.border} transition-all hover:border-[#C9A227]/30 ${filter === s.key ? "ring-1 ring-[#C9A227]/40" : ""}`}
+              style={glassCard}
             >
-              <p className="text-3xl font-extrabold text-[#1B3A6B]">
+              <p className="text-3xl font-extrabold text-[#C9A227]">
                 {counts[s.key as keyof typeof counts]}
               </p>
-              <p className="text-sm text-gray-500 mt-1">{s.label}</p>
+              <p className="text-sm text-[#C9A227]/50 mt-1">{s.label}</p>
             </button>
           ))}
         </div>
 
-        {/* Leads table */}
-        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
-          <div className="px-6 py-4 border-b border-gray-100 flex items-center justify-between">
-            <h2 className="font-bold text-[#1B3A6B]">
+        {/* Table */}
+        <div className="rounded-2xl border border-[#C9A227]/15 overflow-hidden" style={glassCard}>
+          <div className="px-6 py-4 border-b border-[#C9A227]/10 flex items-center justify-between">
+            <h2 className="font-bold text-[#C9A227]">
               פניות {filter !== "all" ? `— ${statusLabels[filter as Lead["status"]]}` : ""}
             </h2>
-            <span className="text-sm text-gray-400">{filtered.length} פניות</span>
+            <span className="text-sm text-[#C9A227]/40">{filtered.length} פניות</span>
           </div>
 
           {filtered.length === 0 ? (
-            <div className="py-16 text-center text-gray-400">
+            <div className="py-16 text-center text-[#C9A227]/40">
               <p className="text-4xl mb-2">📭</p>
               <p>אין פניות להצגה</p>
             </div>
           ) : (
             <div className="overflow-x-auto">
               <table className="w-full text-sm">
-                <thead className="bg-gray-50 text-gray-500 text-xs uppercase">
+                <thead className="border-b border-[#C9A227]/10 text-[#C9A227]/40 text-xs uppercase">
                   <tr>
-                    <th className="text-right px-4 py-3 font-semibold">שם</th>
-                    <th className="text-right px-4 py-3 font-semibold">טלפון</th>
-                    <th className="text-right px-4 py-3 font-semibold">אימייל</th>
-                    <th className="text-right px-4 py-3 font-semibold">סוג עסק</th>
-                    <th className="text-right px-4 py-3 font-semibold">הודעה</th>
-                    <th className="text-right px-4 py-3 font-semibold">תאריך</th>
-                    <th className="text-right px-4 py-3 font-semibold">סטטוס</th>
+                    {["שם", "טלפון", "אימייל", "סוג עסק", "הודעה", "תאריך", "סטטוס"].map((h) => (
+                      <th key={h} className="text-right px-4 py-3 font-semibold">{h}</th>
+                    ))}
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-gray-50">
+                <tbody className="divide-y divide-[#C9A227]/05">
                   {filtered.map((lead) => (
-                    <tr key={lead.id} className="hover:bg-gray-50 transition-colors">
-                      <td className="px-4 py-3 font-semibold text-[#1B3A6B] whitespace-nowrap">
-                        {lead.name}
-                      </td>
+                    <tr key={lead.id} className="hover:bg-[#C9A227]/03 transition-colors">
+                      <td className="px-4 py-3 font-semibold text-[#C9A227] whitespace-nowrap">{lead.name}</td>
                       <td className="px-4 py-3">
-                        <a
-                          href={`tel:${lead.phone}`}
-                          className="text-[#1B3A6B] hover:text-[#C9A227] font-medium transition-colors"
-                        >
+                        <a href={`tel:${lead.phone}`} className="text-[#C9A227]/70 hover:text-[#C9A227] transition-colors font-medium">
                           {lead.phone}
                         </a>
                       </td>
-                      <td className="px-4 py-3 text-gray-600">
-                        {lead.email ? (
-                          <a href={`mailto:${lead.email}`} className="hover:text-[#C9A227] transition-colors">
-                            {lead.email}
-                          </a>
-                        ) : (
-                          <span className="text-gray-300">—</span>
-                        )}
+                      <td className="px-4 py-3 text-[#C9A227]/60">
+                        {lead.email
+                          ? <a href={`mailto:${lead.email}`} className="hover:text-[#C9A227] transition-colors">{lead.email}</a>
+                          : <span className="text-[#C9A227]/20">—</span>}
                       </td>
-                      <td className="px-4 py-3 text-gray-600 whitespace-nowrap">
-                        {lead.business_type || <span className="text-gray-300">—</span>}
+                      <td className="px-4 py-3 text-[#C9A227]/60 whitespace-nowrap">
+                        {lead.business_type || <span className="text-[#C9A227]/20">—</span>}
                       </td>
-                      <td className="px-4 py-3 text-gray-500 max-w-xs">
-                        {lead.message ? (
-                          <span className="line-clamp-2">{lead.message}</span>
-                        ) : (
-                          <span className="text-gray-300">—</span>
-                        )}
+                      <td className="px-4 py-3 text-[#C9A227]/50 max-w-xs">
+                        {lead.message
+                          ? <span className="line-clamp-2">{lead.message}</span>
+                          : <span className="text-[#C9A227]/20">—</span>}
                       </td>
-                      <td className="px-4 py-3 text-gray-500 whitespace-nowrap text-xs">
+                      <td className="px-4 py-3 text-[#C9A227]/40 whitespace-nowrap text-xs">
                         {new Date(lead.created_at).toLocaleString("he-IL", {
-                          day: "numeric",
-                          month: "short",
-                          hour: "2-digit",
-                          minute: "2-digit",
+                          day: "numeric", month: "short", hour: "2-digit", minute: "2-digit",
                         })}
                       </td>
                       <td className="px-4 py-3">
                         <select
                           value={lead.status}
                           disabled={updating === lead.id}
-                          onChange={(e) =>
-                            updateStatus(lead.id, e.target.value as Lead["status"])
-                          }
-                          className={`text-xs font-semibold px-2 py-1 rounded-full border-0 cursor-pointer ${statusColors[lead.status]}`}
+                          onChange={(e) => updateStatus(lead.id, e.target.value as Lead["status"])}
+                          className={`text-xs font-semibold px-2 py-1 rounded-full cursor-pointer bg-transparent ${statusColors[lead.status]}`}
                         >
                           <option value="new">חדש</option>
                           <option value="in_progress">בטיפול</option>
