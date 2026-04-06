@@ -1,12 +1,13 @@
 import Link from "next/link";
+import { Building2, Flame, Shield, HeartPulse, Leaf, HardHat, CheckCircle2, ArrowLeft } from "lucide-react";
 
 const authorities = [
-  { icon: "🏛️", name: "עירייה" },
-  { icon: "🚒", name: "כיבוי אש" },
-  { icon: "👮", name: "משטרה" },
-  { icon: "🏥", name: "משרד הבריאות" },
-  { icon: "🌿", name: "איכות הסביבה" },
-  { icon: "👷", name: "משרד העבודה" },
+  { icon: Building2, name: "עירייה" },
+  { icon: Flame, name: "כיבוי אש" },
+  { icon: Shield, name: "משטרה" },
+  { icon: HeartPulse, name: "משרד הבריאות" },
+  { icon: Leaf, name: "איכות הסביבה" },
+  { icon: HardHat, name: "משרד העבודה" },
 ];
 
 const businessTypes = [
@@ -25,36 +26,55 @@ const steps = [
   { num: "04", title: "קבלת הרישיון", desc: "מקבלים את הרישיון — ורק אז משלמים את היתרה" },
 ];
 
+const whyCards = [
+  {
+    icon: "🎯",
+    title: "מומחיות בלתי מתפשרת",
+    desc: "הנדסאי בניין ותברואן מוסמך עם ידע מעמיק בדרישות כל רשות ורשות.",
+  },
+  {
+    icon: "💼",
+    title: "אתה לא צריך לזוז",
+    desc: "משה מנהל הכל בשמך — כתיבה, הגשה, מעקב, ותשובות לרשויות.",
+  },
+  {
+    icon: "✅",
+    title: "תשלום לאחר הצלחה",
+    desc: "70% מהשכר משולמים רק לאחר קבלת הרישיון.",
+  },
+];
+
+const gradientText = {
+  background: "linear-gradient(180deg, #C9A227 0%, rgba(201,162,39,0.6) 100%)",
+  WebkitBackgroundClip: "text" as const,
+  WebkitTextFillColor: "transparent" as const,
+  backgroundClip: "text" as const,
+};
+
+const glassCard = {
+  background: "linear-gradient(145deg, rgba(201,162,39,0.07) 0%, rgba(201,162,39,0.02) 100%)",
+};
+
 export default function HomePage() {
   return (
     <div className="bg-[#0d1f3c]">
 
       {/* HERO */}
       <section className="relative py-24 px-4 text-center overflow-hidden">
-        {/* Grid bg */}
         <div className="absolute inset-0 pointer-events-none"
           style={{
             backgroundSize: "60px 60px",
             backgroundImage: "linear-gradient(to right, rgba(201,162,39,0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(201,162,39,0.05) 1px, transparent 1px)",
           }}
         />
-        {/* Aurora */}
         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[70vw] h-[50vh] rounded-full blur-[100px] pointer-events-none"
           style={{ background: "radial-gradient(circle, rgba(201,162,39,0.1) 0%, rgba(27,58,107,0.15) 50%, transparent 70%)" }}
         />
-
         <div className="relative max-w-4xl mx-auto">
           <div className="inline-block bg-[#C9A227]/10 border border-[#C9A227]/30 text-[#C9A227]/80 text-sm font-semibold px-4 py-1 rounded-full mb-6 backdrop-blur-sm">
             הנדסאי בניין | תברואן מוסמך
           </div>
-          <h1 className="text-4xl md:text-6xl font-extrabold leading-tight mb-6"
-            style={{
-              background: "linear-gradient(180deg, #C9A227 0%, rgba(201,162,39,0.6) 100%)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundClip: "text",
-            }}
-          >
+          <h1 className="text-4xl md:text-6xl font-extrabold leading-tight mb-6" style={gradientText}>
             רישוי עסקים בלי כאב ראש
             <br />
             משה ונטורה מטפל בשבילך
@@ -64,17 +84,15 @@ export default function HomePage() {
             משה ינהל עבורך את כל התהליך — מהתוכנית ועד קבלת הרישיון.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/contact"
+            <Link href="/contact"
               className="bg-[#C9A227]/10 hover:bg-[#C9A227]/20 border border-[#C9A227]/40 hover:border-[#C9A227]/80 text-[#C9A227] font-bold px-8 py-4 rounded-full text-lg transition-all backdrop-blur-sm shadow-lg"
             >
               קבל ייעוץ חינם עכשיו
             </Link>
-            <Link
-              href="/process"
-              className="border border-[#C9A227]/20 hover:border-[#C9A227]/40 text-[#C9A227]/60 hover:text-[#C9A227] px-8 py-4 rounded-full text-lg transition-all"
+            <Link href="/process"
+              className="border border-[#C9A227]/20 hover:border-[#C9A227]/40 text-[#C9A227]/60 hover:text-[#C9A227] px-8 py-4 rounded-full text-lg transition-all flex items-center justify-center gap-2"
             >
-              איך זה עובד?
+              איך זה עובד? <ArrowLeft className="w-4 h-4" />
             </Link>
           </div>
         </div>
@@ -83,17 +101,17 @@ export default function HomePage() {
       {/* AUTHORITIES STRIP */}
       <section className="border-y border-[#C9A227]/10 py-6 px-4 bg-[#0a1828]">
         <div className="max-w-5xl mx-auto">
-          <p className="text-center text-[#C9A227]/50 text-xs font-bold tracking-widest uppercase mb-4">
+          <p className="text-center text-[#C9A227]/40 text-xs font-bold tracking-widest uppercase mb-5">
             ניהול מול כל הרשויות
           </p>
           <div className="flex flex-wrap justify-center gap-3">
-            {authorities.map((a) => (
-              <div
-                key={a.name}
-                className="flex items-center gap-2 bg-[#C9A227]/05 border border-[#C9A227]/15 rounded-full px-4 py-2 text-[#C9A227]/70 text-sm backdrop-blur-sm"
+            {authorities.map(({ icon: Icon, name }) => (
+              <div key={name}
+                className="flex items-center gap-2 border border-[#C9A227]/15 rounded-full px-4 py-2 text-[#C9A227]/70 text-sm backdrop-blur-sm"
+                style={{ background: "rgba(201,162,39,0.04)" }}
               >
-                <span>{a.icon}</span>
-                <span>{a.name}</span>
+                <Icon className="w-4 h-4 text-[#C9A227]/50" />
+                <span>{name}</span>
               </div>
             ))}
           </div>
@@ -103,24 +121,12 @@ export default function HomePage() {
       {/* WHY MOSHE */}
       <section className="py-16 px-4">
         <div className="max-w-5xl mx-auto">
-          <h2 className="text-3xl font-extrabold text-center mb-12"
-            style={{
-              background: "linear-gradient(180deg, #C9A227 0%, rgba(201,162,39,0.6) 100%)",
-              WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text",
-            }}
-          >
+          <h2 className="text-3xl font-extrabold text-center mb-12" style={gradientText}>
             למה לבחור במשה ונטורה?
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[
-              { icon: "🎯", title: "מומחיות בלתי מתפשרת", desc: "הנדסאי בניין ותברואן מוסמך עם ידע מעמיק בדרישות כל רשות ורשות." },
-              { icon: "💼", title: "אתה לא צריך לזוז", desc: "משה מנהל הכל בשמך — כתיבה, הגשה, מעקב, ותשובות לרשויות." },
-              { icon: "✅", title: "תשלום לאחר הצלחה", desc: "70% מהשכר משולמים רק לאחר קבלת הרישיון." },
-            ].map((card) => (
-              <div key={card.title}
-                className="rounded-2xl p-6 text-center border border-[#C9A227]/15 backdrop-blur-sm"
-                style={{ background: "linear-gradient(145deg, rgba(201,162,39,0.07) 0%, rgba(201,162,39,0.02) 100%)" }}
-              >
+            {whyCards.map((card) => (
+              <div key={card.title} className="rounded-2xl p-6 text-center border border-[#C9A227]/15" style={glassCard}>
                 <div className="text-5xl mb-4">{card.icon}</div>
                 <h3 className="text-xl font-bold text-[#C9A227] mb-2">{card.title}</h3>
                 <p className="text-[#C9A227]/55 text-sm leading-relaxed">{card.desc}</p>
@@ -133,12 +139,7 @@ export default function HomePage() {
       {/* PROCESS MINI */}
       <section className="py-16 px-4 bg-[#0a1828]">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-extrabold text-center mb-12"
-            style={{
-              background: "linear-gradient(180deg, #C9A227 0%, rgba(201,162,39,0.6) 100%)",
-              WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text",
-            }}
-          >
+          <h2 className="text-3xl font-extrabold text-center mb-12" style={gradientText}>
             4 שלבים לרישיון העסק שלך
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
@@ -155,8 +156,8 @@ export default function HomePage() {
             ))}
           </div>
           <div className="text-center mt-10">
-            <Link href="/process" className="text-[#C9A227]/60 hover:text-[#C9A227] transition-colors text-sm font-semibold underline underline-offset-4">
-              קרא עוד על תהליך העבודה ←
+            <Link href="/process" className="text-[#C9A227]/60 hover:text-[#C9A227] transition-colors text-sm font-semibold underline underline-offset-4 inline-flex items-center gap-1">
+              קרא עוד על תהליך העבודה <ArrowLeft className="w-4 h-4" />
             </Link>
           </div>
         </div>
@@ -165,21 +166,15 @@ export default function HomePage() {
       {/* BUSINESS TYPES */}
       <section className="py-16 px-4">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl font-extrabold mb-4"
-            style={{
-              background: "linear-gradient(180deg, #C9A227 0%, rgba(201,162,39,0.6) 100%)",
-              WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text",
-            }}
-          >
-            לכל סוג עסק
-          </h2>
+          <h2 className="text-3xl font-extrabold mb-4" style={gradientText}>לכל סוג עסק</h2>
           <p className="text-[#C9A227]/50 mb-8 text-sm">משה עובד עם עסקים מכל הסקטורים וכל שלבי הרישוי</p>
           <div className="flex flex-wrap justify-center gap-3">
             {businessTypes.map((b) => (
               <span key={b}
-                className="border border-[#C9A227]/20 text-[#C9A227]/70 px-4 py-2 rounded-full text-sm font-medium"
+                className="border border-[#C9A227]/20 text-[#C9A227]/70 px-4 py-2 rounded-full text-sm font-medium flex items-center gap-2"
                 style={{ background: "rgba(201,162,39,0.06)" }}
               >
+                <CheckCircle2 className="w-3.5 h-3.5 text-[#C9A227]/50" />
                 {b}
               </span>
             ))}

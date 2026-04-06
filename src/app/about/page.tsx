@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { HardHat, FlaskConical, ScrollText, Users } from "lucide-react";
 
 const gradientText = {
   background: "linear-gradient(180deg, #C9A227 0%, rgba(201,162,39,0.6) 100%)",
@@ -13,10 +14,10 @@ const glassCard = {
 };
 
 const credentials = [
-  { icon: "🏗️", title: "הנדסאי בניין מוסמך", desc: "ידע טכני מעמיק בתכנון ובנייה" },
-  { icon: "🧪", title: "תברואן מוסמך", desc: "מוסמך לאישורי בריאות ותברואה" },
-  { icon: "📜", title: "ניסיון עשיר", desc: "ליווי מאות עסקים מתחומים שונים" },
-  { icon: "🤝", title: "ניסיון רב בעבודה מול רשויות מקומיות", desc: "היכרות מעמיקה עם הליכי הרישוי" },
+  { icon: HardHat, title: "הנדסאי בניין מוסמך", desc: "ידע טכני מעמיק בתכנון ובנייה" },
+  { icon: FlaskConical, title: "תברואן מוסמך", desc: "מוסמך לאישורי בריאות ותברואה" },
+  { icon: ScrollText, title: "ניסיון עשיר", desc: "ליווי מאות עסקים מתחומים שונים" },
+  { icon: Users, title: "ניסיון רב מול רשויות", desc: "היכרות מעמיקה עם הליכי הרישוי" },
 ];
 
 export default function AboutPage() {
@@ -39,7 +40,6 @@ export default function AboutPage() {
       {/* Profile */}
       <section className="py-12 px-4">
         <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          {/* Photo */}
           <div className="flex justify-center">
             <div className="relative">
               <div className="absolute inset-0 rounded-2xl transform rotate-2 scale-105 opacity-30 border border-[#C9A227]/30"
@@ -62,11 +62,8 @@ export default function AboutPage() {
             </div>
           </div>
 
-          {/* Text */}
           <div>
-            <h2 className="text-3xl font-extrabold mb-6" style={gradientText}>
-              שלום, אני משה ונטורה
-            </h2>
+            <h2 className="text-3xl font-extrabold mb-6" style={gradientText}>שלום, אני משה ונטורה</h2>
             <div className="space-y-4 text-[#C9A227]/65 leading-relaxed text-sm">
               <p>
                 אני עוסק בתחום רישוי העסקים כבר שנים רבות, ומתמחה בניהול התהליך הבירוקרטי
@@ -95,7 +92,7 @@ export default function AboutPage() {
               <a href="tel:054-589-2059"
                 className="border border-[#C9A227]/25 text-[#C9A227]/70 font-bold px-6 py-3 rounded-full hover:border-[#C9A227]/50 hover:text-[#C9A227] transition-all"
               >
-                📞 054-589-2059
+                054-589-2059
               </a>
             </div>
           </div>
@@ -109,13 +106,20 @@ export default function AboutPage() {
             מה מביא משה לשולחן?
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5">
-            {credentials.map((c) => (
-              <div key={c.title} className="rounded-xl p-5 text-center border border-[#C9A227]/15" style={glassCard}>
-                <div className="text-4xl mb-3">{c.icon}</div>
-                <h3 className="font-bold text-[#C9A227] text-sm mb-1">{c.title}</h3>
-                <p className="text-[#C9A227]/50 text-xs">{c.desc}</p>
-              </div>
-            ))}
+            {credentials.map((c) => {
+              const Icon = c.icon;
+              return (
+                <div key={c.title} className="rounded-xl p-5 text-center border border-[#C9A227]/15" style={glassCard}>
+                  <div className="w-12 h-12 rounded-xl border border-[#C9A227]/20 flex items-center justify-center mx-auto mb-3"
+                    style={{ background: "rgba(201,162,39,0.08)" }}
+                  >
+                    <Icon className="w-6 h-6 text-[#C9A227]" />
+                  </div>
+                  <h3 className="font-bold text-[#C9A227] text-sm mb-1">{c.title}</h3>
+                  <p className="text-[#C9A227]/50 text-xs">{c.desc}</p>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>

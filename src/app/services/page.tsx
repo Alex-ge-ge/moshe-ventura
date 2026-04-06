@@ -1,53 +1,5 @@
 import Link from "next/link";
-
-const glassCard = {
-  background: "linear-gradient(145deg, rgba(201,162,39,0.07) 0%, rgba(201,162,39,0.02) 100%)",
-};
-
-const services = [
-  {
-    icon: "📋",
-    title: "הכנת תוכנית עסק",
-    desc: "הכנת תוכנית עסק מקיפה ומפורטת בהתאם לדרישות העירייה והרשויות הרלוונטיות.",
-    includes: ["תרשים אדריכלי", "תוכנית תברואה", "תוכנית בטיחות אש", "בדיקת עמידה בתקנות"],
-  },
-  {
-    icon: "🏛️",
-    title: "הגשה לעירייה",
-    desc: "הגשת הבקשה לרישיון עסק לעירייה, כולל כל הטפסים הנדרשים, ומעקב שוטף עד לקבלת הרישיון.",
-    includes: ["מילוי כל הטפסים", "הגשה דיגיטלית ופיזית", "מעקב אחר הבקשה", "טיפול בהתנגדויות"],
-  },
-  {
-    icon: "🚒",
-    title: "כיבוי אש",
-    desc: "ליווי מול פקוד כיבוי אש לקבלת אישור בטיחות. כולל הכנת תוכנית אש, הסדרת מטפים, גלאים ויציאות חירום.",
-    includes: ["תוכנית בטיחות אש", "הסדרת ציוד כיבוי", "ליווי בביקורת", "קבלת אישור"],
-  },
-  {
-    icon: "👮",
-    title: "משטרה",
-    desc: "טיפול בדרישות הרישוי מטעם המשטרה, הכולל בדיקות אבטחה ורישיונות לעסקים הדורשים אישור משטרתי.",
-    includes: ["בקשת אישור משטרתי", "תכנון אבטחה", "מעקב ועדכון", "קבלת היתר"],
-  },
-  {
-    icon: "🏥",
-    title: "משרד הבריאות",
-    desc: "ליווי מול משרד הבריאות לקבלת אישורים תברואתיים. רלוונטי במיוחד למסעדות, מאפיות, מטבחים תעשייתיים.",
-    includes: ["תוכנית תברואה מפורטת", "ביקורת תברואן"],
-  },
-  {
-    icon: "👷",
-    title: "משרד העבודה",
-    desc: "ליווי מול משרד העבודה בכל הנוגע לבטיחות במקום העבודה ודרישות תקנות העבודה.",
-    includes: ["בטיחות עובדים", "תקינות חשמל", "בדיקות שמיעה", "עבודה בסביבה נקיה"],
-  },
-  {
-    icon: "🌿",
-    title: "איכות הסביבה",
-    desc: "טיפול בדרישות המשרד לאיכות הסביבה — רלוונטי למפעלים, מוסכים, כבסיות ועסקים עם פליטות.",
-    includes: ["בדיקת פליטות", "תוכנית ניהול פסולת", "דרישות רעש", "קבלת היתר סביבתי"],
-  },
-];
+import { FileText, Building2, Flame, Shield, HeartPulse, HardHat, Leaf } from "lucide-react";
 
 const gradientText = {
   background: "linear-gradient(180deg, #C9A227 0%, rgba(201,162,39,0.6) 100%)",
@@ -55,6 +7,55 @@ const gradientText = {
   WebkitTextFillColor: "transparent" as const,
   backgroundClip: "text" as const,
 };
+
+const glassCard = {
+  background: "linear-gradient(145deg, rgba(201,162,39,0.07) 0%, rgba(201,162,39,0.02) 100%)",
+};
+
+const services = [
+  {
+    icon: FileText,
+    title: "הכנת תוכנית עסק",
+    desc: "הכנת תוכנית עסק מקיפה ומפורטת בהתאם לדרישות העירייה והרשויות הרלוונטיות.",
+    includes: ["תרשים אדריכלי", "תוכנית תברואה", "תוכנית בטיחות אש", "בדיקת עמידה בתקנות"],
+  },
+  {
+    icon: Building2,
+    title: "הגשה לעירייה",
+    desc: "הגשת הבקשה לרישיון עסק לעירייה, כולל כל הטפסים הנדרשים, ומעקב שוטף עד לקבלת הרישיון.",
+    includes: ["מילוי כל הטפסים", "הגשה דיגיטלית ופיזית", "מעקב אחר הבקשה", "טיפול בהתנגדויות"],
+  },
+  {
+    icon: Flame,
+    title: "כיבוי אש",
+    desc: "ליווי מול פקוד כיבוי אש לקבלת אישור בטיחות. כולל הכנת תוכנית אש, הסדרת מטפים, גלאים ויציאות חירום.",
+    includes: ["תוכנית בטיחות אש", "הסדרת ציוד כיבוי", "ליווי בביקורת", "קבלת אישור"],
+  },
+  {
+    icon: Shield,
+    title: "משטרה",
+    desc: "טיפול בדרישות הרישוי מטעם המשטרה, הכולל בדיקות אבטחה ורישיונות לעסקים הדורשים אישור משטרתי.",
+    includes: ["בקשת אישור משטרתי", "תכנון אבטחה", "מעקב ועדכון", "קבלת היתר"],
+  },
+  {
+    icon: HeartPulse,
+    title: "משרד הבריאות",
+    desc: "ליווי מול משרד הבריאות לקבלת אישורים תברואתיים. רלוונטי במיוחד למסעדות, מאפיות, מטבחים תעשייתיים.",
+    includes: ["תוכנית תברואה מפורטת", "ביקורת תברואן"],
+  },
+  {
+    icon: HardHat,
+    title: "משרד העבודה",
+    desc: "ליווי מול משרד העבודה בכל הנוגע לבטיחות במקום העבודה ודרישות תקנות העבודה.",
+    includes: ["בטיחות עובדים", "תקינות חשמל", "בדיקות שמיעה", "עבודה בסביבה נקיה"],
+  },
+  {
+    icon: Leaf,
+    title: "איכות הסביבה",
+    desc: "טיפול בדרישות המשרד לאיכות הסביבה — רלוונטי למפעלים, מוסכים, כבסיות ועסקים עם פליטות.",
+    includes: ["בדיקת פליטות", "תוכנית ניהול פסולת", "דרישות רעש", "קבלת היתר סביבתי"],
+  },
+];
 
 export default function ServicesPage() {
   return (
@@ -78,25 +79,32 @@ export default function ServicesPage() {
       {/* Services grid */}
       <section className="py-12 px-4">
         <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-5">
-          {services.map((s) => (
-            <div key={s.title} className="rounded-2xl p-6 border border-[#C9A227]/15" style={glassCard}>
-              <div className="flex items-start gap-4 mb-4">
-                <div className="text-4xl">{s.icon}</div>
-                <div>
-                  <h3 className="text-xl font-bold text-[#C9A227]">{s.title}</h3>
-                  <p className="text-[#C9A227]/55 text-sm mt-1 leading-relaxed">{s.desc}</p>
+          {services.map((s) => {
+            const Icon = s.icon;
+            return (
+              <div key={s.title} className="rounded-2xl p-6 border border-[#C9A227]/15" style={glassCard}>
+                <div className="flex items-start gap-4 mb-4">
+                  <div className="w-12 h-12 rounded-xl border border-[#C9A227]/20 flex items-center justify-center flex-shrink-0"
+                    style={{ background: "rgba(201,162,39,0.08)" }}
+                  >
+                    <Icon className="w-6 h-6 text-[#C9A227]" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-[#C9A227]">{s.title}</h3>
+                    <p className="text-[#C9A227]/55 text-sm mt-1 leading-relaxed">{s.desc}</p>
+                  </div>
                 </div>
+                <ul className="space-y-1 border-t border-[#C9A227]/10 pt-4">
+                  {s.includes.map((item) => (
+                    <li key={item} className="flex items-center gap-2 text-sm text-[#C9A227]/70">
+                      <span className="text-[#C9A227]">✓</span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
               </div>
-              <ul className="space-y-1 border-t border-[#C9A227]/10 pt-4">
-                {s.includes.map((item) => (
-                  <li key={item} className="flex items-center gap-2 text-sm text-[#C9A227]/70">
-                    <span className="text-[#C9A227] font-bold">✓</span>
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </section>
 
