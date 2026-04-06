@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { Building2, Flame, Shield, HeartPulse, Leaf, HardHat, CheckCircle2, ArrowLeft } from "lucide-react";
+import { SplineScene } from "@/components/ui/splite";
+import { Spotlight } from "@/components/ui/spotlight";
 
 const authorities = [
   { icon: Building2, name: "עירייה" },
@@ -60,40 +62,51 @@ export default function HomePage() {
     <div className="bg-[#0d1f3c]">
 
       {/* HERO */}
-      <section className="relative py-24 px-4 text-center overflow-hidden">
+      <section className="relative w-full h-[600px] md:h-[680px] overflow-hidden bg-[#0a1828]">
+        {/* Grid */}
         <div className="absolute inset-0 pointer-events-none"
           style={{
             backgroundSize: "60px 60px",
             backgroundImage: "linear-gradient(to right, rgba(201,162,39,0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(201,162,39,0.05) 1px, transparent 1px)",
           }}
         />
-        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[70vw] h-[50vh] rounded-full blur-[100px] pointer-events-none"
-          style={{ background: "radial-gradient(circle, rgba(201,162,39,0.1) 0%, rgba(27,58,107,0.15) 50%, transparent 70%)" }}
-        />
-        <div className="relative max-w-4xl mx-auto">
-          <div className="inline-block bg-[#C9A227]/10 border border-[#C9A227]/30 text-[#C9A227]/80 text-sm font-semibold px-4 py-1 rounded-full mb-6 backdrop-blur-sm">
-            הנדסאי בניין | תברואן מוסמך
+        <Spotlight className="-top-40 right-0 md:right-60 md:-top-20" fill="#C9A227" />
+
+        <div className="relative z-10 flex flex-col md:flex-row h-full max-w-7xl mx-auto px-4">
+          {/* Left — text */}
+          <div className="flex-1 flex flex-col justify-center py-12 md:py-0">
+            <div className="inline-block bg-[#C9A227]/10 border border-[#C9A227]/30 text-[#C9A227]/80 text-sm font-semibold px-4 py-1 rounded-full mb-6 backdrop-blur-sm w-fit">
+              הנדסאי בניין | תברואן מוסמך
+            </div>
+            <h1 className="text-4xl md:text-5xl font-extrabold leading-tight mb-6" style={gradientText}>
+              רישוי עסקים בלי כאב ראש
+              <br />
+              משה ונטורה מטפל בשבילך
+            </h1>
+            <p className="text-[#C9A227]/60 max-w-md mb-8 leading-relaxed text-base md:text-lg">
+              קיבלת סירוב מהעירייה? אין לך זמן לרוץ בין הרשויות?<br />
+              משה ינהל עבורך את כל התהליך — מהתוכנית ועד קבלת הרישיון.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Link href="/contact"
+                className="bg-[#C9A227]/10 hover:bg-[#C9A227]/20 border border-[#C9A227]/40 hover:border-[#C9A227]/80 text-[#C9A227] font-bold px-8 py-4 rounded-full text-base transition-all backdrop-blur-sm shadow-lg w-fit"
+              >
+                קבל ייעוץ חינם עכשיו
+              </Link>
+              <Link href="/process"
+                className="border border-[#C9A227]/20 hover:border-[#C9A227]/40 text-[#C9A227]/60 hover:text-[#C9A227] px-8 py-4 rounded-full text-base transition-all flex items-center gap-2 w-fit"
+              >
+                איך זה עובד? <ArrowLeft className="w-4 h-4" />
+              </Link>
+            </div>
           </div>
-          <h1 className="text-4xl md:text-6xl font-extrabold leading-tight mb-6" style={gradientText}>
-            רישוי עסקים בלי כאב ראש
-            <br />
-            משה ונטורה מטפל בשבילך
-          </h1>
-          <p className="text-lg md:text-xl text-[#C9A227]/60 max-w-2xl mx-auto mb-10 leading-relaxed">
-            קיבלת סירוב מהעירייה? אין לך זמן לרוץ בין הרשויות?<br />
-            משה ינהל עבורך את כל התהליך — מהתוכנית ועד קבלת הרישיון.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/contact"
-              className="bg-[#C9A227]/10 hover:bg-[#C9A227]/20 border border-[#C9A227]/40 hover:border-[#C9A227]/80 text-[#C9A227] font-bold px-8 py-4 rounded-full text-lg transition-all backdrop-blur-sm shadow-lg"
-            >
-              קבל ייעוץ חינם עכשיו
-            </Link>
-            <Link href="/process"
-              className="border border-[#C9A227]/20 hover:border-[#C9A227]/40 text-[#C9A227]/60 hover:text-[#C9A227] px-8 py-4 rounded-full text-lg transition-all flex items-center justify-center gap-2"
-            >
-              איך זה עובד? <ArrowLeft className="w-4 h-4" />
-            </Link>
+
+          {/* Right — Spline 3D */}
+          <div className="flex-1 relative hidden md:block">
+            <SplineScene
+              scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
+              className="w-full h-full"
+            />
           </div>
         </div>
       </section>
