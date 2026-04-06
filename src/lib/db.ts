@@ -35,3 +35,8 @@ export async function updateLeadStatus(id: number, status: Lead["status"]) {
   const sql = getSql();
   await sql`UPDATE leads SET status = ${status} WHERE id = ${id}`;
 }
+
+export async function deleteLead(id: number) {
+  const sql = getSql();
+  await sql`DELETE FROM leads WHERE id = ${id}`;
+}

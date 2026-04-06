@@ -25,6 +25,7 @@ export default function AdminDashboard({ initialLeads }: { initialLeads: Lead[] 
   const [leads, setLeads] = useState<Lead[]>(initialLeads);
   const [filter, setFilter] = useState<"all" | Lead["status"]>("all");
   const [updating, setUpdating] = useState<number | null>(null);
+  const [deleting, setDeleting] = useState<number | null>(null);
   const router = useRouter();
 
   const filtered = filter === "all" ? leads : leads.filter((l) => l.status === filter);
@@ -40,6 +41,20 @@ export default function AdminDashboard({ initialLeads }: { initialLeads: Lead[] 
       setLeads((prev) => prev.map((l) => (l.id === id ? { ...l, status } : l)));
     }
     setUpdating(null);
+  }
+
+  async function deleteLead(id: number) {
+    if (!confirm("למחוק פנייה זו?")) return;
+    setDeleting(id);
+    const res = await fetch("/api/admin/leads/delete", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id }),
+    });
+    if (res.ok) {
+      setLeads((prev) => prev.filter((l) => l.id !== id));
+    }
+    setDeleting(null);
   }
 
   async function handleLogout() {
@@ -121,7 +136,7 @@ export default function AdminDashboard({ initialLeads }: { initialLeads: Lead[] 
               <table className="w-full text-sm">
                 <thead className="border-b border-[#C9A227]/10 text-[#C9A227]/40 text-xs uppercase">
                   <tr>
-                    {["שם", "טלפון", "אימייל", "סוג עסק", "הודעה", "תאריך", "סטטוס"].map((h) => (
+                    {["שם", "טלפון", "אימייל", "סוג עסק", "הודעה", "תאריך", "סטטוס", ""].map((h) => (
                       <th key={h} className="text-right px-4 py-3 font-semibold">{h}</th>
                     ))}
                   </tr>
@@ -164,6 +179,15 @@ export default function AdminDashboard({ initialLeads }: { initialLeads: Lead[] 
                           <option value="in_progress">בטיפול</option>
                           <option value="done">טופל</option>
                         </select>
+                      </td>
+                      <td className="px-4 py-3">
+                        <button
+                          onClick={() => deleteLead(lead.id)}
+                          disabled={deleting === lead.id}
+                          className="text-red-400/60 hover:text-red-400 transition-colors text-xs px-2 py-1 rounded border border-red-400/20 hover:border-red-400/50 disabled:opacity-40"
+                        >
+                          {deleting === lead.id ? "..." : "מחק"}
+                        </button>
                       </td>
                     </tr>
                   ))}
