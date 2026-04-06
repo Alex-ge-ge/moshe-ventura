@@ -100,7 +100,7 @@ export default function HomePage() {
           </div>
 
           {/* Right — Spline 3D robot */}
-          <div className="flex-1 relative">
+          <div className="w-[40%] md:flex-1 relative shrink-0">
             <SplineScene
               scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
               className="w-full h-full"
