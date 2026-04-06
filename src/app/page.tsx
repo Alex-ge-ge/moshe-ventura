@@ -63,7 +63,7 @@ export default function HomePage() {
 
       {/* HERO */}
       <EtherealBeamsHero>
-        <div className="relative z-10 flex flex-col md:flex-row h-full min-h-[680px] max-w-7xl mx-auto px-4">
+        <div className="relative z-10 flex flex-row h-full min-h-[680px] max-w-7xl mx-auto px-4">
           {/* Grid overlay */}
           <div className="absolute inset-0 pointer-events-none"
             style={{
@@ -72,7 +72,7 @@ export default function HomePage() {
             }}
           />
           {/* Left — text */}
-          <div className="flex-1 flex flex-col justify-center py-12 md:py-0">
+          <div className="flex-1 flex flex-col justify-center py-8 min-w-0">
             <div className="inline-block bg-[#C9A227]/10 border border-[#C9A227]/30 text-[#C9A227]/80 text-sm font-semibold px-4 py-1 rounded-full mb-6 backdrop-blur-sm w-fit">
               הנדסאי בניין | תברואן מוסמך
             </div>
@@ -100,7 +100,7 @@ export default function HomePage() {
           </div>
 
           {/* Right — Spline 3D robot */}
-          <div className="flex-1 relative block" style={{ minHeight: '300px' }}>
+          <div className="flex-1 relative">
             <SplineScene
               scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
               className="w-full h-full"
